@@ -1,0 +1,50 @@
+ CREATE TABLE `user` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL DEFAULT '',
+  `surname` varchar(20) NOT NULL DEFAULT '',
+  `gender` char(6) NOT NULL DEFAULT '',
+  `id_city` int(10) DEFAULT NULL,
+  `id_access` int(10) DEFAULT NULL,
+  `date` varchar(10) DEFAULT NULL,
+  `id_vuz` int(10) DEFAULT NULL,
+  `id_job` int(10) DEFAULT NULL,
+  `avatar` varchar(50) DEFAULT NULL,
+  `id_interes` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+ CREATE TABLE `access` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `id_user` int(5) DEFAULT NULL,
+  `login` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+);
+CREATE TABLE countries (
+  id int(5) NOT NULL AUTO_INCREMENT primary key,
+   country varchar(50) not null default''
+);
+
+CREATE TABLE city (
+  id int(5) NOT NULL AUTO_INCREMENT primary key,
+   city varchar(50) not null default'',
+id_country int(5) not null
+);
+
+CREATE TABLE colleges (
+  id int(5) NOT NULL AUTO_INCREMENT primary key,
+   college varchar(50) not null default'',
+id_country int(5) not null,
+id_city int(5) not null
+);
+
+CREATE TABLE interests (
+  id int(5) NOT NULL AUTO_INCREMENT primary key,
+   interest varchar(50) not null default''
+);
+
+CREATE TABLE jobs (
+  id int(5) NOT NULL AUTO_INCREMENT primary key,
+   job varchar(50) not null default''
+);
