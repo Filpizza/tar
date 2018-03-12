@@ -1,5 +1,16 @@
 <?php
 include('db.php');
+$data = $_POST;
+var_dump($data);
+if(isset($data['do_sign'])) {
+    $country = htmlspecialchars(trim($data['country']));
+    $city = htmlspecialchars(trim($data['city']));
+    $date = htmlspecialchars($data['date']);
+    $college = htmlspecialchars(trim($data['college']));
+    $interest = htmlspecialchars(trim($data['interst']));
+    include 'registration.php';
+    mysqli_query($link, "INSERT INTO `user` (`date`) VALUES ('$date') WHERE `id_login`= $name");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,12 +41,12 @@ background-size: 100%; /* Современные браузеры */
 <form>
     <div class="t">Поздравляем вы на фейсбуке</br> помогите нам лучше узнать вас</div>
 <div class="container-fluid">
-        <form method="post" class="form-horizontal" action="insert.php">
+        <form method="post" class="form-horizontal" action="<?= $_SERVER['PHP_SELF'] ?>"">
             <div class="row">
             <div class="form-group col-md-2">
                 <label for="exampleInputcountry" class="control-label">Country</label>
                 <div>
-                    <input type="text" class="form-control" id="country" name="country" placeholder="Country" value="<?= $data['login'] ?>">
+                    <input type="text" class="form-control" id="country" name="country" placeholder="Country" >
                 </div>
             </div>
             </div>
@@ -43,7 +54,7 @@ background-size: 100%; /* Современные браузеры */
             <div class="form-group col-md-2">
                 <label for="exampleInputcity" class=" control-label">City</label>
                 <div>
-                    <input type="text" class="form-control" id="city" name="city" placeholder="city" value="<?= $data['email'] ?>">
+                    <input type="text" class="form-control" id="city" name="city" placeholder="city">
                 </div>
             </div>
             </div>
@@ -70,9 +81,9 @@ background-size: 100%; /* Современные браузеры */
                 </div>
             </div></div>
             <div>
-            <button type="submit" name="do_sign" class="btn btn-primary col-md-1 ">send</button>
+                <button type="submit" name="do_sign" class="btn btn-primary col-md-1 ">send</button>
                 </div>
 </div></form>
-
 </body>
 </html>
+
