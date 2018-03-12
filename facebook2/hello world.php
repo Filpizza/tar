@@ -8,7 +8,8 @@ if(isset($data['do_sign'])) {
     $college = htmlspecialchars(trim($data['college']));
     $interest = htmlspecialchars(trim($data['interst']));
     echo $date;
-    mysqli_query($link, "INSERT INTO `user` (`date`) VALUES ('$date') WHERE `id_access`= $name");
+    $CreateSql ="update `user` set date='$date'  WHERE `id_access`= (select id  from access WHERE login='y');";
+    mysqli_query($link, $CreateSql) or die(mysqli_error($link));
 }
 ?>
 <!DOCTYPE html>
