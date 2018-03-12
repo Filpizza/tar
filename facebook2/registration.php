@@ -92,7 +92,7 @@
   <body>
       <div class="container">
           <div class="row">
-              <form method="post" class="form-horizontal col-md-6 col-md-offset-3" action="<?= $_SERVER['hello world.php'] ?>">
+              <form method="post" class="form-horizontal col-md-6 col-md-offset-3" action="<?= $_SERVER['PHP_SELF'] ?>">
               <h1>Registration</h1>
                   <div class="form-group">
       <label for="exampleInputEmail1" class="col-sm-2 control-label">Login</label>
@@ -144,10 +144,8 @@
       </div>
       <h3 style="text-align: center ">Если Вы уже регистрировались, пройдите <a href="login.php">авторизацию</a>.</h3>
   </body>
-
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-  </body>
 </html>

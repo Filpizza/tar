@@ -1,15 +1,14 @@
 <?php
 include('db.php');
 $data = $_POST;
-var_dump($data);
 if(isset($data['do_sign'])) {
     $country = htmlspecialchars(trim($data['country']));
     $city = htmlspecialchars(trim($data['city']));
     $date = htmlspecialchars($data['date']);
     $college = htmlspecialchars(trim($data['college']));
     $interest = htmlspecialchars(trim($data['interst']));
-    include 'registration.php';
-    mysqli_query($link, "INSERT INTO `user` (`date`) VALUES ('$date') WHERE `id_login`= $name");
+    echo $date;
+    mysqli_query($link, "INSERT INTO `user` (`date`) VALUES ('$date') WHERE `id_access`= $name");
 }
 ?>
 <!DOCTYPE html>
@@ -23,7 +22,6 @@ if(isset($data['do_sign'])) {
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
 </head>
-
 <style>
 body {
 background: url(http://www.kartinkijane.ru/pic/201305/2560x1440/kartinkijane.ru-41051.jpg);
@@ -38,10 +36,10 @@ background-size: 100%; /* Современные браузеры */
     font-weight: bold;
     text-shadow: 3px 3px 0px #fff;
 </style>
-<form>
+<body>
     <div class="t">Поздравляем вы на фейсбуке</br> помогите нам лучше узнать вас</div>
 <div class="container-fluid">
-        <form method="post" class="form-horizontal" action="<?= $_SERVER['PHP_SELF'] ?>"">
+    <form method="post" class="form-horizontal" action="<?= $_SERVER['PHP_SELF'] ?>"">
             <div class="row">
             <div class="form-group col-md-2">
                 <label for="exampleInputcountry" class="control-label">Country</label>
@@ -83,7 +81,8 @@ background-size: 100%; /* Современные браузеры */
             <div>
                 <button type="submit" name="do_sign" class="btn btn-primary col-md-1 ">send</button>
                 </div>
-</div></form>
+</div>
+</form>
 </body>
 </html>
 
