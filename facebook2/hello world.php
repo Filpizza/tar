@@ -10,6 +10,8 @@ if(isset($data['do_sign'])) {
     echo $date;
     $CreateSql ="update `user` set date='$date'  WHERE `id_access`= (select id  from access WHERE login='y');";
     mysqli_query($link, $CreateSql) or die(mysqli_error($link));
+    $CreateSql ="INSERT  INTO `city` (`city`) VALUES ('$city');";
+    mysqli_query($link, $CreateSql) or die(mysqli_error($link));
 }
 ?>
 <!DOCTYPE html>
