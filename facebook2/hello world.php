@@ -1,5 +1,18 @@
 <?php
 include('db.php');
+$data = $_POST;
+if(isset($data['do_sign'])) {
+    $country = htmlspecialchars(trim($data['country']));
+    $city = htmlspecialchars(trim($data['city']));
+    $date = htmlspecialchars($data['date']);
+    $college = htmlspecialchars(trim($data['college']));
+    $interest = htmlspecialchars(trim($data['interst']));
+    echo $date;
+    $CreateSql ="update `user` set date='$date'  WHERE `id_access`= (select id  from access WHERE login='y');";
+    mysqli_query($link, $CreateSql) or die(mysqli_error($link));
+    $CreateSql ="INSERT  INTO `city` (`city`) VALUES ('$city');";
+    mysqli_query($link, $CreateSql) or die(mysqli_error($link));
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +25,6 @@ include('db.php');
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
 </head>
-
 <style>
 body {
 background: url(http://www.kartinkijane.ru/pic/201305/2560x1440/kartinkijane.ru-41051.jpg);
@@ -27,15 +39,15 @@ background-size: 100%; /* Современные браузеры */
     font-weight: bold;
     text-shadow: 3px 3px 0px #fff;
 </style>
-<form>
+<body>
     <div class="t">Поздравляем вы на фейсбуке</br> помогите нам лучше узнать вас</div>
 <div class="container-fluid">
-        <form method="post" class="form-horizontal" action="insert.php">
+    <form method="post" class="form-horizontal" action="<?= $_SERVER['PHP_SELF'] ?>"">
             <div class="row">
             <div class="form-group col-md-2">
                 <label for="exampleInputcountry" class="control-label">Country</label>
                 <div>
-                    <input type="text" class="form-control" id="country" name="country" placeholder="Country" value="<?= $data['login'] ?>">
+                    <input type="text" class="form-control" id="country" name="country" placeholder="Country" >
                 </div>
             </div>
             </div>
@@ -43,7 +55,7 @@ background-size: 100%; /* Современные браузеры */
             <div class="form-group col-md-2">
                 <label for="exampleInputcity" class=" control-label">City</label>
                 <div>
-                    <input type="text" class="form-control" id="city" name="city" placeholder="city" value="<?= $data['email'] ?>">
+                    <input type="text" class="form-control" id="city" name="city" placeholder="city">
                 </div>
             </div>
             </div>
@@ -70,9 +82,10 @@ background-size: 100%; /* Современные браузеры */
                 </div>
             </div></div>
             <div>
-            <button type="submit" name="do_sign" class="btn btn-primary col-md-1 ">send</button>
+                <button type="submit" name="do_sign" class="btn btn-primary col-md-1 ">send</button>
                 </div>
-</div></form>
-
+</div>
+</form>
 </body>
 </html>
+
